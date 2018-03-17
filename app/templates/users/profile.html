@@ -1,0 +1,41 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}
+User Profile
+{% endblock %}
+{% block body %}
+<div class="content-section">
+{{ utils.flashed_messages() }}
+<div class="container">
+<div class="row">
+	<div class="col-sm">
+		<div class="panel panel-default">
+			<div class="panel-heading">User information <a href="{{ url_for('users.profile_edit', id=current_user.id) }}"><i class="fa fa-pencil"></i></a></div>
+			<div class="panel-body">
+				<p><u>Full name</u>: {{ current_user.full_name }}</p>
+				<p><u>Email</u>: {{ current_user.email }}</p>
+				<p><u>SSN (Last 4 digits)</u>: {{ current_user.ssn }}</p>
+			</div>
+		</div>
+	</div>
+	{% if current_user.is_verified != 0 %}
+	<div class="col-sm">
+		<div class="panel panel-default">
+			<div class="panel-heading">Balance</div>
+			<div class="panel-body">
+				<p><u>Total Balance</u>: ${{ current_user.balance }}</p>
+				<p><u>Credit limit</u>: {{ current_user.credit_limit }}</p>
+				<p><u>Card Number</u>: {{ current_user.card_number }}</p>
+			</div>
+		</div>
+	</div>
+	<a href="{{ url_for('users.send_money') }}" class="btn btn-primary" role="button">Send Money</a>
+	{% endif %}
+	<center>
+		<img src="{{current_user.profile_image}}" width=50%, height=50%>
+		<a href="{{ url_for('users.profile_image') }}" class="btn btn-primary" role="button">Change Profile</a>
+	</center>
+</div>
+</div>
+{% endblock %}

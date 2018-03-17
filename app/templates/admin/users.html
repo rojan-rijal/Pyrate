@@ -1,0 +1,41 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}
+Users
+{% endblock %}
+{% block body %}
+<div class="content-section">
+{{ utils.flashed_messages() }}
+<div class="container">
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>SSN</th>
+			<th>Verified User</th>
+			<th>Card Number</th>
+			<th>Balance</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for user in users %}
+		<tr>
+			<td>{{ user.full_name }}</td>
+			<td>{{ user.email }}</td>
+			<td>{{ user.ssn }}</td>
+			{% if user.is_verified == 1 %}
+			<td>Yes</td>
+			{% else %}
+			<td>No</td>
+			{% endif %}
+			<td>{{ user.card_number }}</td>
+			<td>{{ user.balance }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+</div
+</div>
+{% endblock %}

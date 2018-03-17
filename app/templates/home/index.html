@@ -1,0 +1,20 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="container">
+<div class="content-section">
+<div class="jumbotron">
+<h1>Welcome</h1>
+{{ utils.flashed_messages() }}
+<p>Welcome to Bank Crouscant, where you can easily start the first steps in your financial journey. We provide different services to make our customers feel welcome and have a successful financial condition.</p>
+<p>Some of our services are as follows:</p>
+<ul>
+<li>Cheap Credit Card services: You will easily get approved for one of the most advanced and secure credit card system. Our minimum credit card balance starts from $5000 and maximum is $10,000</li>
+<li>Reliable locker security: We have secure lockers in place to keep your expensive materials like golds.</li>
+<li>Reliable Mortgage: We will give you good mortgage loan to buy a house and have a great time with your family.</li>
+</ul>
+<p><center>So what are you waiting for? Apply now and hear back within 24 hours</p>
+<a href="{{ url_for('home.apply') }}" role="button" class="btn btn-primary">Apply</a></center>
+</div></div></div>
+{% endblock %}
